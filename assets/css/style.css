@@ -217,8 +217,6 @@ nav {
 
 .full-image{
     padding:0px;
-    /* height:100%; */
-    /* max-width:90%; */
     max-height:75%;
     z-index:6;
     vertical-align:middle;
@@ -286,6 +284,18 @@ footer{
     }
 }
 
+@media screen and (orientation:portrait){
+    #image-view{
+        height:100%;
+        width:auto;
+    }
+
+    .full-image{
+        height:auto;
+        width:100%;
+    }
+}
+
 /* small window */
 @media screen and (max-width:745px){
 
@@ -296,6 +306,7 @@ footer{
         clear:both;
         display:block;
     }
+
 
    
 
