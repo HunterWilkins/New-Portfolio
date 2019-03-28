@@ -12,26 +12,32 @@ $(document).ready(function(){
     
     var galleryArray = [{
             name: "Artiodactyla-Thumbnail.png", 
-            genre: "concept"
+            genre: "concept",
+            large: "Artiodactyla of the Primordial Winter.png"
+            
         },
         {
             name: "Bucketbot-Thumbnail.png",
-            genre: "romance"
+            genre: "romance",
+            large: "Bucketbot&#39s Discovery.png"
         },
 
         {
             name: "Opossum-Thumbnail.png",
-            genre: "misc"
+            genre: "misc",
+            large: "Mason&#39s Opossum Shirt.png"
         },
 
         {
             name:"Lilia-Thumbnail.png",
-            genre: "concept"
+            genre: "concept",
+            large: "Lilia - Goddess of Magic.png"
         },
 
         {
             name: "Mandolineer-Thumbnail.png",
-            genre: "concept"
+            genre: "concept",
+            large: "The Mandolineer.png"
         },
 
         {
@@ -44,24 +50,28 @@ $(document).ready(function(){
         }
         ];
     
-
+    var viewingImage = false;
+    
+    
     $(".content-box").html(aboutContent);
     
     //Navigation Tab Buttons ==========================================================================
     $(".navbuttons").on("click", ".tabs", function(){
         
         if ($(this).text() === "About" && section !== "About"){
+            // $(".tab-title").text("About");
             atmosphere("about");
         }
 
         else if ($(this).text() === "Portfolio" ){
             atmosphere("portfolio");
+            $(".tab-title").text("Artistic Portfolio");
 
             //Gallery Image Thumbnails ====================================================
 
              if ($(".gallery").find("img").length !== galleryArray.length){
                 for (var i = 0; i < galleryArray.length; i++){
-                    $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail'>");
+                    $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' value = '"+ galleryArray[i].name +"'>");
                 }
              }
             //====================================================================
@@ -79,13 +89,33 @@ $(document).ready(function(){
         //Adding Images from the Relevant Genre ================================================
             for (var i = 0; i < galleryArray.length; i++){
                 if (genreButton === galleryArray[i].genre){                        
-                $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail'>");
+                $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' id = '"+ galleryArray[i].name +"'>");
                 }
             }
             //====================================================================
         });
         //===============================================================================
         
+    $(".content-box").on("click", ".thumbnail", function(){
+        $("#image-view").empty();
+        $("#image-view").css("display", "block");
+
+        for (x in galleryArray){
+            if (galleryArray[x].name === $(this).attr("value")){
+                console.log(galleryArray[x].large);
+
+                $("#image-view").append("<img src = 'assets/images/full-sized-images/" + galleryArray[x].large + "' class = 'full-image' id = '"+ galleryArray[x].large +"'>");
+            }
+        }
+        viewingImage = true;
+    });
+
+    $("#image-view").on("click", function(){
+        $(this).css("display", "none");
+    })
+
+
+  
 
     function atmosphere(page){
         //Available Colors:
@@ -100,16 +130,16 @@ $(document).ready(function(){
         //rgb(60, 71, 42);
         //rgb(41, 57, 31);
         //=================================
-        // var greenScreen = ["rgb(38, 49, 26)", "rgb(222, 223, 161)", "rgb(9, 23, 9)", "rgba(9, 23, 9, 0.50)", "rgba(127, 132, 85, .5)", "rgb(60, 71, 42)",   ]
-
         if (page === "portfolio"){
 
             $(".gallery .thumbnail").remove();
             
             // Aesthetic changes ===========================================================
+            
+            $("*").css("outline-color", "rgb(127, 127, 127)");
             $("body").css("background-color", "rgb(47, 47, 47)");
             $("nav").css({"background-color": "rgb(25, 25, 25)", "color": "rgb(221, 221, 221)", "border-color": "rgb(85, 85, 85, .5)"});
-            $(".tabs").css({"background-color" : "rgb(71, 71, 71)", "color": "rgb(221, 221, 221)"});
+            $(".tabs").css({"background-color" : "rgb(47, 47, 47", "color": "rgb(221, 221, 221)"});
             $(".tabs").hover(function(){
                     $(this).css({"background-color": "rgb(31, 31, 31)", "text-shadow": "0 0 5px rgb(238, 238, 238)"});
                 }, function(){
@@ -121,7 +151,8 @@ $(document).ready(function(){
             $("footer").css({"background-color" : "rgb(9, 9, 9, .75", "color" : "rgb(127, 127, 127)"});
             
             // //Dropdown colors
-            $(".genre").css({"background-color" : "rgb(32,32,32)", "color" : "rgb(225,225,225)"})
+            $(".genre").css({"background-color" : "rgb(32,32,32)", "color" : "rgb(225,225,225)"});
+            $(".genre-buttons").css({"border-color" : "rgb(49, 49, 49)", "background-color": "rgb(21, 21, 21)"});
             $(".genre").hover(function(){
                 $(this).css({"background-color": "rgb(42, 42, 42)"});
             }, function(){
@@ -131,13 +162,14 @@ $(document).ready(function(){
             //==========================================================================================
             
             $(".content-box").html(portfolioContent);
+            $(".tab-title").text("Artistic Portfolio");
             section = "Portfolio";
         }
 
         else if (page === "about"){
         
             // Aesthetic Changes ============================================================
-
+            $("*").css("outline-color", "rgb(127, 132, 85)")
             $("body").css("background-color", "rgb(38, 49, 26)");
             $("nav").css({"background-color": "rgb(9, 23, 9)", "color": "rgb(222, 223, 161)", "border-color": "rgb(127, 132, 85, .5)"});
             
@@ -150,22 +182,24 @@ $(document).ready(function(){
           
             $(".content-box").css({"background-color": "rgb(9, 23, 9)", "color":"rgb(222, 223, 161)", "border" : "rgb(127, 132, 85, .5) solid"});
             $("#navbar-header").css("text-shadow", "0 0 5px lightgreen");
-            $(".tab-title").css("color", "rgb(180, 180, 180)");
+            $(".tab-title").css("color", "rgb(222, 223, 180)");
            
             $("footer").css({"background-color" : "rgb(9, 23, 9, .75", "color" : "rgb(127, 132, 85)"});
             //Dropdown Buttons
-            $(".genre").css({"background-color" : "rgb(38, 49, 26)", "color" : "rgb(222, 223, 161)"})
+            $(".genre").css({"background-color" : "rgb(38, 49, 26)", "color" : "rgb(222, 223, 161)"});
+            $(".genre-buttons").css({"border-color" : "rgb(38, 49, 26)"});
             $(".genre").hover(function(){
                 $(this).css({"background-color": "rgb(60, 71, 42)"});
             }, function(){
                 $(this).css({"background-color": "rgb(41, 57, 31)"});
             });
 
-
             //===========================================================================================
             section = "About";
             
             $(".content-box").html(aboutContent);
+            $(".tab-title").text("About");
+         
             $(".gallery").empty();
     
         }
