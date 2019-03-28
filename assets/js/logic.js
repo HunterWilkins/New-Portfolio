@@ -13,40 +13,49 @@ $(document).ready(function(){
     var galleryArray = [{
             name: "Artiodactyla-Thumbnail.png", 
             genre: "concept",
-            large: "Artiodactyla of the Primordial Winter.png"
+            large: "Artiodactyla of the Primordial Winter.png",
+            desc:"Near the beginning of time, a primordial deer wanders the sunless world."
             
         },
         {
             name: "Bucketbot-Thumbnail.png",
             genre: "romance",
-            large: "Bucketbot&#39s Discovery.png"
+            large: "Bucketbot&#39s Discovery.png",
+            desc:"A recently-married couple takes a moment to remind each other of their love, drawing the gaze of a longing robot."
         },
 
         {
             name: "Opossum-Thumbnail.png",
             genre: "misc",
-            large: "Mason&#39s Opossum Shirt.png"
+            large: "Mason&#39s Opossum Shirt.png",
+            desc: "Mason hates Opossums, so, I made him this shirt."
         },
 
         {
             name:"Lilia-Thumbnail.png",
             genre: "concept",
-            large: "Lilia - Goddess of Magic.png"
+            large: "Lilia - Goddess of Magic.png",
+            desc: "A notorious trickster, Lilia could demolish the world if she wished. The denizens of the world are thankful she's slow to boredom."
         },
 
         {
             name: "Mandolineer-Thumbnail.png",
             genre: "concept",
-            large: "The Mandolineer.png"
+            large: "The Mandolineer.png",
+            desc: " "
         },
 
         {
             name: "Snake-Thumbnail.png",
-            genre: "misc"
+            genre: "misc",
+            large: "The Cereal Snake.png",
+            desc: "HiI'mtheCerealSnakeGoodbye!"
         },
         {
             name:"Slime-Thumbnail.png",
-            genre:"romance"
+            genre:"romance",
+            large: "The Lonely Slime.png",
+            desc: " "
         }
         ];
     
@@ -89,7 +98,7 @@ $(document).ready(function(){
         //Adding Images from the Relevant Genre ================================================
             for (var i = 0; i < galleryArray.length; i++){
                 if (genreButton === galleryArray[i].genre){                        
-                $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' id = '"+ galleryArray[i].name +"'>");
+                $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' value = '"+ galleryArray[i].name +"'>");
                 }
             }
             //====================================================================
@@ -103,8 +112,11 @@ $(document).ready(function(){
         for (x in galleryArray){
             if (galleryArray[x].name === $(this).attr("value")){
                 console.log(galleryArray[x].large);
+                $("#image-view").prepend("<p class = 'image-subtitle-dark'>- Click Anywhere to Exit View -</p>");
 
                 $("#image-view").append("<img src = 'assets/images/full-sized-images/" + galleryArray[x].large + "' class = 'full-image' id = '"+ galleryArray[x].large +"'>");
+                $("#image-view").append("<div class = 'image-subtitle'><h3>" + galleryArray[x].large.split(".")[0] + "</h3><p>" + galleryArray[x].desc + "</p></div>");
+                console.log(galleryArray[x].large.split(".")[0]);
             }
         }
         viewingImage = true;
@@ -167,6 +179,8 @@ $(document).ready(function(){
         }
 
         else if (page === "about"){
+
+            $(".gallery").empty();
         
             // Aesthetic Changes ============================================================
             $("*").css("outline-color", "rgb(127, 132, 85)")
