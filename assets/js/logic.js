@@ -1,9 +1,8 @@
 $(document).ready(function(){
 
-
     var section = "About";
 
-    var aboutContent = $("<div class='info'><h1 class = 'tab-title'>About</h1><img  id = 'portrait' src = 'assets/images/self-portrait.webp'><p>Hunter Wilkins is an artist, singer, musician, writer, and programmer. " +
+    var aboutContent = $("<div class='info'><h1 class = 'tab-title'>About</h1><img  id = 'portrait' src = 'assets/images/self-portrait.jpg'><p>Hunter Wilkins is an artist, singer, musician, writer, and programmer. " +
                         "He graduated from Trinity University in May of 2018 with a Bachelor's in Art and uses his knowledge"+
                         " of color theory and design to enhance his front-end programming. "+
                         "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p></div>");
@@ -13,14 +12,14 @@ $(document).ready(function(){
     var galleryArray = [{
             name: "Artiodactyla-Thumbnail.png", 
             genre: "concept",
-            large: "Artiodactyla of the Primordial Winter.png",
+            large: "Artiodactyla of the Primordial Winter.jpg",
             desc:"Near the beginning of time, a primordial deer wanders the sunless world."
             
         },
         {
             name: "Bucketbot-Thumbnail.png",
             genre: "romance",
-            large: "Bucketbot&#39s Discovery.png",
+            large: "Bucketbot&#39s Discovery.jpg",
             desc:"A recently-married couple takes a moment to remind each other of their love, drawing the gaze of a longing robot."
         },
 
@@ -35,13 +34,13 @@ $(document).ready(function(){
             name:"Lilia-Thumbnail.png",
             genre: "concept",
             large: "Lilia - Goddess of Magic.png",
-            desc: "A notorious trickster, Lilia could demolish the world if she wished. The denizens of the world are thankful she's slow to boredom."
+            desc: "A notorious (and powerful) trickster, Lilia could demolish the world if she so desired. Mortals are thankful she's slow to boredom."
         },
 
         {
             name: "Mandolineer-Thumbnail.png",
             genre: "concept",
-            large: "The Mandolineer.png",
+            large: "The Mandolineer.jpg",
             desc: " "
         },
 
@@ -55,8 +54,62 @@ $(document).ready(function(){
             name:"Slime-Thumbnail.png",
             genre:"romance",
             large: "The Lonely Slime.png",
-            desc: " "
+            desc: ""
+        },
+        {
+            name: "Iliolos-Thumbnail.png",
+            genre: "concept",
+            large: "Iliolis - The Trapped Goddess.jpg",
+            desc: "A goddess, trapped within an ocean of liquid air, reaches eternally for the one thing that could make her omnipotent."
+        },
+
+        {
+            name:"Ugh-Thumbnail.jpg",
+            genre: "romance",
+            large:"Ugh.jpg",
+            desc: "Hostage Situation"
+        },
+        {
+            name:"It Beats Debt-Thumbnail.jpg",
+            genre: "romance",
+            large:"It Beats Debt.jpg",
+            desc:"Hostage Situation"
+        },
+        {
+            name:"Awkward-Thumbnail.jpg",
+            genre: "romance",
+            large: "Awkward.jpg",
+            desc: "Hostage Situation: \"I hope she's not scared...\" / \"I hope he's not crazy...\""
+        },
+        {
+            name:"A Couple Stories-Thumbnail.jpg",
+            genre: "romance",
+            large: "A Couple Stories.jpg",
+            desc:"Hostage Situation: Nothing brings two outcasts together more than their pasts."
+        },
+        {
+            name: "Planning-Thumbnail.jpg",
+            genre:"romance",
+            large: "Planning.jpg",
+            desc:"Hostage Situation"
+        },
+        {
+            name:"Heist-Thumbnail.jpg",
+            genre:"romance",
+            large:"Heist.jpg",
+            desc:"Hostage Situation"
+        },
+        {
+            name:"Triumph-Thumbnail.jpg",
+            genre:"romance",
+            large:"Triumph.jpg",
+            desc:"Hostage Situation: \"Three square meals a day and housing with your sweetheart? Sounds like a triumph to me, right?\""
+        },
+
+        {
+            name:""
         }
+            
         ];
     
     var viewingImage = false;
