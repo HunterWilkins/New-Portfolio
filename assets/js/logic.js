@@ -8,8 +8,9 @@ $(document).ready(function(){
                         "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p></div>");
     
     var portfolioContent = $("<div class = 'gallery'><h1 class = 'tab-title' style = 'color:rgb(180, 180, 180);'>Artistic Portfolio</h1></div>");
-    
-    var galleryArray = [{
+
+    var galleryArray = [
+        {
             name: "Artiodactyla-Thumbnail.png", 
             genre: "concept",
             large: "Artiodactyla of the Primordial Winter.jpg",
@@ -53,8 +54,8 @@ $(document).ready(function(){
         {
             name:"Slime-Thumbnail.png",
             genre:"romance",
-            large: "The Lonely Slime.png",
-            desc: ""
+            large: "The Lonely Slime.jpg",
+            desc: "As the immortal slime grows in years, it becomes more complex. Eventually, its mind becomes indistinguishable to a human's, and it learns to long for the same things we do."
         },
         {
             name: "Iliolos-Thumbnail.png",
@@ -107,14 +108,44 @@ $(document).ready(function(){
         },
 
         {
-            name:""
+            name: "Mandolia-Thumbnail.jpg",
+            genre:"misc",
+            large:"Mandolia.jpg",
+            desc:"A birthday present for my Dad, who plays the mandolin."
+        },
+        {
+            name:"A Complementary Couple-Thumbnail.jpg",
+            genre:"romance",
+            large:"A Complementary Couple.jpg",
+            desc:"Complementary colors, while the furthest apart on the color wheel, each make the other brighter when paired together."
+        },
+        {
+            name:"Ashen Valley-Thumbnail.jpg",
+            genre:"concept",
+            large:"Ashen Valley.jpg",
+            desc: "...once you traverse the Gilded Gate, you'll enter the Golden Valley, land of the Artians."        
         }
-            
+                
         ];
     
-    var viewingImage = false;
-    
-    
+    var codeContent = [
+        {
+            name: "Ñusic",
+            link: "https://hunterwilkins.github.io/project_one/",
+            thumbnail: "Nusic-logo-transparent.png"
+        },
+        {
+            name: "The Oracle's Test",
+            link: "https://hunterwilkins.github.io/Oracle_Test/",
+            thumbnail:"Oracle&#39s Test-Thumbnail.jpg"
+        },
+        {
+            name: "Coooool Trivia!",
+            link: "https://hunterwilkins.github.io/Cool_Trivia/",
+            thumbnail:"Trivia-Thumbnail.jpg"
+        }
+
+    ];
     $(".content-box").html(aboutContent);
     
     //Navigation Tab Buttons ==========================================================================
@@ -127,8 +158,7 @@ $(document).ready(function(){
 
         else if ($(this).text() === "Portfolio" ){
             atmosphere("portfolio");
-            $(".tab-title").text("Artistic Portfolio");
-
+            
             //Gallery Image Thumbnails ====================================================
 
              if ($(".gallery").find("img").length !== galleryArray.length){
@@ -137,6 +167,9 @@ $(document).ready(function(){
                 }
              }
             //====================================================================
+        }
+
+        else if ($(this).text() === "Contact"){
         }
     });
     //============================================================================================
@@ -148,26 +181,40 @@ $(document).ready(function(){
         atmosphere("portfolio");
         var genreButton = ($(this).text().toLowerCase());
         $(".gallery .thumbnail").remove();
+        $(".gallery")
         //Adding Images from the Relevant Genre ================================================
+        if (genreButton === "code"){
+
+            addLinks();
+        }
+        else {
             for (var i = 0; i < galleryArray.length; i++){
                 if (genreButton === galleryArray[i].genre){                        
                 $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' value = '"+ galleryArray[i].name +"'>");
                 }
             }
+        }
+            
             //====================================================================
         });
         //===============================================================================
         
     $(".content-box").on("click", ".thumbnail", function(){
+
         $("#image-view").empty();
         $("#image-view").css("display", "block");
 
         for (x in galleryArray){
             if (galleryArray[x].name === $(this).attr("value")){
                 console.log(galleryArray[x].large);
-                $("#image-view").prepend("<p class = 'image-subtitle-dark'>- Click Anywhere to Exit View -</p>");
+                if (window.innerWidth < 490){
+                    $("#image-view").prepend("<p class = 'image-subtitle-dark'>- Click (or Tap) Anywhere to Exit View -</p>");
+                }
+                else {
+                    $("#image-view").prepend("<p class = 'image-subtitle-dark'>- Click Anywhere to Exit View -</p>");
+                }
 
-                $("#image-view").append("<img src = 'assets/images/full-sized-images/" + galleryArray[x].large + "' class = 'full-image' id = '"+ galleryArray[x].large +"'>");
+                $("#image-view").append("<img src = 'assets/images/full-sized-images/" + galleryArray[x].large + "' class = 'full-image col-12' id = '"+ galleryArray[x].large +"'>");
                 $("#image-view").append("<div class = 'image-subtitle'><h3>" + galleryArray[x].large.split(".")[0] + "</h3><p>" + galleryArray[x].desc + "</p></div>");
                 console.log(galleryArray[x].large.split(".")[0]);
             }
@@ -177,10 +224,9 @@ $(document).ready(function(){
 
     $("#image-view").on("click", function(){
         $(this).css("display", "none");
-    })
+    });
 
-
-  
+    
 
     function atmosphere(page){
         //Available Colors:
@@ -198,6 +244,7 @@ $(document).ready(function(){
         if (page === "portfolio"){
 
             $(".gallery .thumbnail").remove();
+            $(".gallery .link-thumbnail").remove();
             
             // Aesthetic changes ===========================================================
             
@@ -227,11 +274,11 @@ $(document).ready(function(){
             //==========================================================================================
             
             $(".content-box").html(portfolioContent);
-            $(".tab-title").text("Artistic Portfolio");
+            $(".tab-title").text("Portfolio");
             section = "Portfolio";
         }
 
-        else if (page === "about"){
+        else if (page === "about" || page === "contact"){
 
             $(".gallery").empty();
         
@@ -262,14 +309,47 @@ $(document).ready(function(){
             });
 
             //===========================================================================================
-            section = "About";
+            if (page === "about"){
+                section = "About";
+                $(".content-box").html(aboutContent);
+                $(".tab-title").text("About");    
+            }
+
+            if (page === "contact"){
+                section = "Contact";
+
+            }
             
-            $(".content-box").html(aboutContent);
-            $(".tab-title").text("About");
-         
             $(".gallery").empty();
     
         }
+    }
+
+    if ($(window).width() <= 490 && $(".tabs").length<3){
+        $(".navbuttons").append("<button class = 'tabs' id = 'code-button'>Code</button>");
+    }
+
+    $(window).resize(function(){
+        if ($(window).width() <= 490){
+            if ($(".tabs").length <3){
+                $(".navbuttons").append("<button class = 'tabs' id = 'code-button'>Code</button>");
+            }
+        }
+        else if ($(window).width() > 490){
+            $("#code-button").remove();
+        }
+    });
+    $("#code-button").on("click", function(){
+        atmosphere("portfolio");
+        addLinks();
+    });
+
+    function addLinks(){
+    console.log("Function Called...");
+        for (var i = 0; i < codeContent.length; i++){
+            console.log(codeContent[i].link);
             
+                $(".gallery").append("<a href = '" +codeContent[i].link + "' target = '_blank'><img src = 'assets/images/thumbnails/" + codeContent[i].thumbnail + "' class = 'link-thumbnail' value = '" + codeContent[i].name + "'></a>");
+        }
     }
 });
