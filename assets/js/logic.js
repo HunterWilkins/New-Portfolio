@@ -5,7 +5,8 @@ $(document).ready(function(){
     var aboutContent = $("<div class='info'><h1 class = 'tab-title'>About</h1><img  id = 'portrait' src = 'assets/images/self-portrait.jpg'><p>Hunter Wilkins is an artist, singer, musician, writer, and programmer. " +
                         "He graduated from Trinity University in May of 2018 with a Bachelor's in Art and uses his knowledge"+
                         " of color theory and design to enhance his front-end programming. "+
-                        "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p></div>");
+                        "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p>" + 
+                        "<a class = 'profile-link' target = '_blank' href = 'https://github.com/HunterWilkins'>GitHub Profile</a> <a target = '_blank' class = 'profile-link' href = 'https://www.linkedin.com/in/hunter-wilkins-591047117/'>LinkedIn Profile</a></div>");
     
     var portfolioContent = $("<div class = 'gallery'><h1 class = 'tab-title' style = 'color:rgb(180, 180, 180);'>Artistic Portfolio</h1></div>");
 
@@ -40,7 +41,7 @@ $(document).ready(function(){
 
         {
             name: "Mandolineer-Thumbnail.png",
-            genre: "concept",
+            genre: "misc",
             large: "The Mandolineer.jpg",
             desc: " "
         },
@@ -168,9 +169,6 @@ $(document).ready(function(){
              }
             //====================================================================
         }
-
-        else if ($(this).text() === "Contact"){
-        }
     });
     //============================================================================================
 
@@ -178,16 +176,18 @@ $(document).ready(function(){
 
     //Portfolio Dropdown Options =================================================================
     $(".genre-buttons").on("click", ".genre", function(){
-        atmosphere("portfolio");
+        
         var genreButton = ($(this).text().toLowerCase());
         $(".gallery .thumbnail").remove();
-        $(".gallery")
+        $(".gallery .link-thumbnail").remove();
+        atmosphere("portfolio");
         //Adding Images from the Relevant Genre ================================================
         if (genreButton === "code"){
 
             addLinks();
         }
         else {
+            
             for (var i = 0; i < galleryArray.length; i++){
                 if (genreButton === galleryArray[i].genre){                        
                 $(".gallery").append("<img src = 'assets/images/thumbnails/" + galleryArray[i].name + "' class = 'thumbnail' value = '"+ galleryArray[i].name +"'>");
@@ -346,10 +346,11 @@ $(document).ready(function(){
 
     function addLinks(){
     console.log("Function Called...");
+    $(".tab-title").text("Code Links");
         for (var i = 0; i < codeContent.length; i++){
             console.log(codeContent[i].link);
             
-                $(".gallery").append("<a href = '" +codeContent[i].link + "' target = '_blank'><img src = 'assets/images/thumbnails/" + codeContent[i].thumbnail + "' class = 'link-thumbnail' value = '" + codeContent[i].name + "'></a>");
+                $(".gallery").append("<a href = '" +codeContent[i].link + "' target = '_blank' class = 'link-thumbnail'>"+ codeContent[i].name + "</a>");
         }
     }
 });

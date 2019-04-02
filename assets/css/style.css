@@ -7,6 +7,28 @@
     transition: outline-color 1s;
 }
 
+.profile-link{
+    text-align:center;
+    float:right;
+    display:block;
+    width:auto;
+    margin:10px;
+    color:rgb(222, 223, 161);
+    padding:10px;
+    background:rgb(38, 49, 26);
+    border:rgb(60, 71, 42) 2px solid;
+    border-radius:4px;
+    text-decoration:none;
+}
+
+.profile-link:visited{
+    color:rgb(127, 132, 85);
+}
+
+a:visited{
+    color:rgb(86, 86, 86);
+}
+
 html{
     box-sizing: content-box;   
     height:100%; 
@@ -36,7 +58,6 @@ body{
 .whole-spiel{
     margin-bottom:80px;
 }
-
 
 .spacer{
     padding:50px;
@@ -171,10 +192,10 @@ nav {
 
 .info p{
     transition: opacity .25s, font-size .25s;
-    text-decoration:underline;
+    /* text-decoration:underline;
     text-decoration-color:rgb(78, 88, 50);
     text-decoration-style: solid;
-    text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none; */
     text-align:justify;
     text-justify:inter-word;
 }
@@ -228,8 +249,18 @@ nav {
 }
 
 .link-thumbnail{
-    width:200px;
-    margin-right:10px;
+    width:150px;
+    color:lightgrey;
+    background:rgb(42, 42, 42);
+    padding:10px;
+    border:lightgrey solid 1px;
+    border-radius:4px;
+    margin:10px;
+    text-decoration:none;
+}
+
+.link-thumbnail:hover{
+    cursor:pointer;
 }
 
 .image-subtitle{
@@ -340,10 +371,6 @@ footer{
         padding:5px;
     }
 
-    .content-box{
-        /* margin-top:120px; */
-    }
-
 }
 
 @media screen and (max-width:590px){
@@ -361,6 +388,16 @@ footer{
     .info{    
         width:590px;
     }
+
+    .profile-link{
+        float:none;
+        font-size:20px;
+        padding:10px;
+        width:60%;
+        
+        margin:5px auto;
+    }
+
     .content-box{
         margin:0 auto;
         width:90%;
@@ -372,7 +409,6 @@ footer{
     .content-box{
         max-width:100%;
         width:100%; 
-          
     }
 
     .full-image{
