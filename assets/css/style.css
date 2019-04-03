@@ -12,8 +12,8 @@
     float:right;
     display:block;
     width:auto;
-    margin:10px;
-    color:rgb(222, 223, 161);
+    margin:0 10px 10px 10px;
+    color:rgb(149, 150, 100);
     padding:10px;
     background:rgb(38, 49, 26);
     border:rgb(60, 71, 42) 2px solid;
@@ -22,7 +22,7 @@
 }
 
 .profile-link:visited{
-    color:rgb(127, 132, 85);
+    color:rgb(150, 149, 102);
 }
 
 a:visited{
@@ -240,12 +240,12 @@ nav {
 }
 
 .full-image{
-    padding:0px;
+    width: auto;
+    max-width:100%;
+    height:auto;
     max-height:80%;
-    z-index:6;
-    vertical-align:middle;
 
-    transition: width .25s, height .25s;
+    z-index:6;
 }
 
 .link-thumbnail{
@@ -336,11 +336,6 @@ footer{
         display:block;
     }
 
-    .full-image{
-        height:auto;
-        max-width:745px;
-    }
-
     .spacer{
         padding:65px;
     }
@@ -381,10 +376,6 @@ footer{
         float:none;
     }
 
-    .full-image{
-        max-width:590px;
-    }
-
     .info{    
         width:590px;
     }
@@ -411,12 +402,6 @@ footer{
         width:100%; 
     }
 
-    .full-image{
-        width: auto;
-        max-width:100%;
-        height:auto;
-    }
-
     nav{
         position:fixed;
         top:0;
@@ -439,8 +424,10 @@ footer{
         z-index:5;
     }
 
-    .tabs{
-        /* width:30%; */
+    .link-thumbnail{
+        float:left;
+        width:100%;
+        margin:15px auto;
     }
 
     .genre-buttons{

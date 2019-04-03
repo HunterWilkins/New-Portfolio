@@ -2,21 +2,20 @@ $(document).ready(function(){
 
     var section = "About";
 
-    var aboutContent = $("<div class='info'><h1 class = 'tab-title'>About</h1><img  id = 'portrait' src = 'assets/images/self-portrait.jpg'><p>Hunter Wilkins is an artist, singer, musician, writer, and programmer. " +
+    var aboutContent = $("<div class='info'><h1 class = 'tab-title' style = 'color:rgb(222, 223, 161);'>About</h1><img  id = 'portrait' src = 'assets/images/self-portrait.jpg'><div><a class = 'profile-link' target = '_blank' href = 'https://github.com/HunterWilkins'>GitHub Profile</a> <a target = '_blank' class = 'profile-link' href = 'https://www.linkedin.com/in/hunter-wilkins-591047117/'>LinkedIn Profile</a><p>Hunter Wilkins is an artist, singer, musician, writer, and programmer. " +
                         "He graduated from Trinity University in May of 2018 with a Bachelor's in Art and uses his knowledge"+
                         " of color theory and design to enhance his front-end programming. "+
-                        "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p>" + 
-                        "<a class = 'profile-link' target = '_blank' href = 'https://github.com/HunterWilkins'>GitHub Profile</a> <a target = '_blank' class = 'profile-link' href = 'https://www.linkedin.com/in/hunter-wilkins-591047117/'>LinkedIn Profile</a></div>");
+                        "His dream is to create immersive, memorable, and intriguing interactive programs that make use of (and further develop) his skillsets.</p><div>" + 
+                        "</div>");
     
-    var portfolioContent = $("<div class = 'gallery'><h1 class = 'tab-title' style = 'color:rgb(180, 180, 180);'>Artistic Portfolio</h1></div>");
+    var portfolioContent = $("<div class = 'gallery'></div>");
 
     var galleryArray = [
         {
             name: "Artiodactyla-Thumbnail.png", 
             genre: "concept",
             large: "Artiodactyla of the Primordial Winter.jpg",
-            desc:"Near the beginning of time, a primordial deer wanders the sunless world."
-            
+            desc:"Near the beginning of time, a primordial deer wanders the sunless world." 
         },
         {
             name: "Bucketbot-Thumbnail.png",
@@ -56,7 +55,7 @@ $(document).ready(function(){
             name:"Slime-Thumbnail.png",
             genre:"romance",
             large: "The Lonely Slime.jpg",
-            desc: "As the immortal slime grows in years, it becomes more complex. Eventually, its mind becomes indistinguishable to a human's, and it learns to long for the same things we do."
+            desc: "As the immortal slime grows in years, it becomes more complex. Eventually, its mind becomes indistinguishable from a human's, and it learns to long for the same things we do."
         },
         {
             name: "Iliolos-Thumbnail.png",
@@ -153,13 +152,14 @@ $(document).ready(function(){
     $(".navbuttons").on("click", ".tabs", function(){
         
         if ($(this).text() === "About" && section !== "About"){
-            // $(".tab-title").text("About");
             atmosphere("about");
+            $(".info").prepend("<h1 class = 'tab-title' style = 'color:rgb(222, 223, 161);'>" + $(this).text() + "</h1>");
+
         }
 
-        else if ($(this).text() === "Portfolio" ){
+        else if ($(this).text() === "Portfolio"){
             atmosphere("portfolio");
-            
+            $(".gallery").append("<h1 class = 'tab-title' style = 'color:rgb(180, 180, 180);'>" + $(this).text() + "</h1>");
             //Gallery Image Thumbnails ====================================================
 
              if ($(".gallery").find("img").length !== galleryArray.length){
@@ -181,6 +181,9 @@ $(document).ready(function(){
         $(".gallery .thumbnail").remove();
         $(".gallery .link-thumbnail").remove();
         atmosphere("portfolio");
+        $(".tab-title").remove();
+        $(".gallery").append("<h1 class = 'tab-title'>" + $(this).text() + "</h1");
+        $(".tab-title").text($(this).text());
         //Adding Images from the Relevant Genre ================================================
         if (genreButton === "code"){
 
@@ -194,7 +197,6 @@ $(document).ready(function(){
                 }
             }
         }
-            
             //====================================================================
         });
         //===============================================================================
@@ -206,7 +208,6 @@ $(document).ready(function(){
 
         for (x in galleryArray){
             if (galleryArray[x].name === $(this).attr("value")){
-                console.log(galleryArray[x].large);
                 if (window.innerWidth < 490){
                     $("#image-view").prepend("<p class = 'image-subtitle-dark'>- Click (or Tap) Anywhere to Exit View -</p>");
                 }
@@ -216,7 +217,6 @@ $(document).ready(function(){
 
                 $("#image-view").append("<img src = 'assets/images/full-sized-images/" + galleryArray[x].large + "' class = 'full-image col-12' id = '"+ galleryArray[x].large +"'>");
                 $("#image-view").append("<div class = 'image-subtitle'><h3>" + galleryArray[x].large.split(".")[0] + "</h3><p>" + galleryArray[x].desc + "</p></div>");
-                console.log(galleryArray[x].large.split(".")[0]);
             }
         }
         viewingImage = true;
@@ -225,8 +225,6 @@ $(document).ready(function(){
     $("#image-view").on("click", function(){
         $(this).css("display", "none");
     });
-
-    
 
     function atmosphere(page){
         //Available Colors:
@@ -241,10 +239,13 @@ $(document).ready(function(){
         //rgb(60, 71, 42);
         //rgb(41, 57, 31);
         //=================================
-        if (page === "portfolio"){
 
+        if (page === "portfolio"){
+            section = "Portfolio";
+            // $(".tab-title").text("Portfolio");
             $(".gallery .thumbnail").remove();
             $(".gallery .link-thumbnail").remove();
+            $(".tab-title").remove();
             
             // Aesthetic changes ===========================================================
             
@@ -270,16 +271,14 @@ $(document).ready(function(){
             }, function(){
                 $(this).css({"background-color": "rgb(32, 32, 32)"});
             });
+            $(".navbuttons").css("background", "rgba(221, 221, 221, 0)");
 
             //==========================================================================================
             
             $(".content-box").html(portfolioContent);
-            $(".tab-title").text("Portfolio");
-            section = "Portfolio";
         }
 
-        else if (page === "about" || page === "contact"){
-
+        else if (page === "about"){
             $(".gallery").empty();
         
             // Aesthetic Changes ============================================================
@@ -296,7 +295,6 @@ $(document).ready(function(){
           
             $(".content-box").css({"background-color": "rgb(9, 23, 9)", "color":"rgb(222, 223, 161)", "border" : "rgb(127, 132, 85, .5) solid"});
             $("#navbar-header").css("text-shadow", "0 0 5px lightgreen");
-            $(".tab-title").css("color", "rgb(222, 223, 180)");
            
             $("footer").css({"background-color" : "rgb(9, 23, 9, .75", "color" : "rgb(127, 132, 85)"});
             //Dropdown Buttons
@@ -309,19 +307,9 @@ $(document).ready(function(){
             });
 
             //===========================================================================================
-            if (page === "about"){
-                section = "About";
-                $(".content-box").html(aboutContent);
-                $(".tab-title").text("About");    
-            }
-
-            if (page === "contact"){
-                section = "Contact";
-
-            }
-            
-            $(".gallery").empty();
-    
+            section = "About";
+            $(".content-box").html(aboutContent);
+            $(".thumbnail").remove();
         }
     }
 
@@ -346,7 +334,6 @@ $(document).ready(function(){
 
     function addLinks(){
     console.log("Function Called...");
-    $(".tab-title").text("Code Links");
         for (var i = 0; i < codeContent.length; i++){
             console.log(codeContent[i].link);
             
