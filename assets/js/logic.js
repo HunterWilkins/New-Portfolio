@@ -124,6 +124,12 @@ $(document).ready(function(){
             genre:"concept",
             large:"Ashen Valley.jpg",
             desc: "...once you traverse the Gilded Gate, you'll enter the Golden Valley, land of the Artians."        
+        },
+        {
+            name:"The Demon of Hate - Thumbnail.jpg",
+            genre:"concept",
+            large:"The Demon of Hate.jpg",
+            desc: "\"The poor thing roared for hours before her throat gave out. Pater's being an absolute angel to her, but it's going to take time...\""        
         }
                 
         ];
