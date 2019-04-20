@@ -138,17 +138,26 @@ $(document).ready(function(){
         {
             name: "Ñusic",
             link: "https://hunterwilkins.github.io/project_one/",
-            thumbnail: "Nusic-logo-transparent.png"
+            thumbnail: "Nusic-logo-transparent.png",
+            github:"https://github.com/HunterWilkins/project_one"
         },
         {
             name: "The Oracle's Test",
             link: "https://hunterwilkins.github.io/Oracle_Test/",
-            thumbnail:"Oracle&#39s Test-Thumbnail.jpg"
+            thumbnail:"Oracle&#39s Test-Thumbnail.jpg",
+            github:"https://github.com/HunterWilkins/Oracle_Test"
         },
         {
             name: "Coooool Trivia!",
             link: "https://hunterwilkins.github.io/Cool_Trivia/",
-            thumbnail:"Trivia-Thumbnail.jpg"
+            thumbnail:"Trivia-Thumbnail.jpg",
+            github:"https://github.com/HunterWilkins/Cool_Trivia"
+        },
+        {
+            name: "ULTIMATE LIST",
+            link: "https://the-ultimate-list-app.herokuapp.com/",
+            thumbnail:"Trivia-Thumbnail.jpg",
+            github:"https://github.com/HunterWilkins/UltimateList"
         }
 
     ];
@@ -182,7 +191,7 @@ $(document).ready(function(){
 
     //Portfolio Dropdown Options =================================================================
     $(".genre-buttons").on("click", ".genre", function(){
-        
+        $(".gallery").empty();
         var genreButton = ($(this).text().toLowerCase());
         $(".gallery .thumbnail").remove();
         $(".gallery .link-thumbnail").remove();
@@ -343,7 +352,14 @@ $(document).ready(function(){
         for (var i = 0; i < codeContent.length; i++){
             console.log(codeContent[i].link);
             
-                $(".gallery").append("<a href = '" +codeContent[i].link + "' target = '_blank' class = 'link-thumbnail'>"+ codeContent[i].name + "</a>");
+                $(".gallery").append(
+                `
+                <div class = "code-links">
+                <a href = '${codeContent[i].link}' target = '_blank' class = 'link-thumbnail'> ${codeContent[i].name}</a>
+                <br>
+                <a href = '${codeContent[i].github}' target = '_blank'>Github Repo</a>
+                </div>
+                `);
         }
     }
 });

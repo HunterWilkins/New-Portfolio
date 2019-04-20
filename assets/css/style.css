@@ -281,6 +281,11 @@ nav {
     font-style:italic;
 }
 
+.code-links{
+    margin-bottom:25px;
+    line-height:2em;
+}
+
 .image-subtitle-dark{
     color:grey;
     /* position:fixed;
