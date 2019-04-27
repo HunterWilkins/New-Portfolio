@@ -249,7 +249,7 @@ $(document).ready(function(){
       
         
         $("#full-view>img").on("load",function(){
-            $("#full-view>img").animate({"top":"50%"}, 1000);
+            $("#full-view>img").animate({"top":"50%", "opacity":"1"}, 1000);
             $("#full-view").animate({"opacity":"1"});
         });
     });
