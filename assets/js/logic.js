@@ -246,9 +246,12 @@ $(document).ready(function(){
             <span>
         </div>
         `);
-
-        $("#full-view").animate({"opacity":"1"});
-        $("#full-view>img").animate({"top":"50%"});
+      
+        
+        $("#full-view>img").on("load",function(){
+            $("#full-view>img").animate({"top":"50%"}, 1000);
+            $("#full-view").animate({"opacity":"1"});
+        });
     });
 
     $("body").on("click", "#full-view>img", function(){

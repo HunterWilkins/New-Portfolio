@@ -110,7 +110,7 @@ nav h1{
     margin:.5%;
     text-overflow:ellipsis;
     text-align:center;
-    overflow:hidden;
+    /* overflow:hidden; */
     
     position:relative;
     z-index:1;
