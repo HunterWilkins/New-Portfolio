@@ -157,11 +157,14 @@ $(document).ready(function(){
 
     addArt("All");
 
-    $(".genre-buttons").on("click", ".genre", function(){
+    $(".tab-group").on("click", ".tab", function(){
         var genre = $(this).text();
         addArt(genre);
     });
 
+    $("#tab-title").on("click", function(){
+        addArt("All");
+    })
 
     $(window).on("resize", function(){
         resize();
