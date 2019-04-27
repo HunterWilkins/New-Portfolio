@@ -265,7 +265,7 @@ $(document).ready(function(){
         if (clicks === 0){
             $("#description").animate({"bottom" : "25%"}, 250);
             $("#full-view>button").animate({"bottom" : "25%"}, 250);
-            $(this).css({"background":"rgb(35,35,35)", "color": "rgb(213,213,213)"});
+            $(this).css({"background":"rgb(35,35,35)"});
             clicks++;
         }
         else {

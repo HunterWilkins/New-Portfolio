@@ -210,14 +210,13 @@ nav h1{
     border:none;
     padding:15px;
     background:rgb(52, 52, 52);
-    color:rgb(193, 193, 193);
+    color:rgb(255, 239, 196);
     transition: color .25s, background .25s;
 }
 
 #full-view button:hover{
     cursor:pointer;
     background:rgb(35, 35, 35);
-    color:rgb(213, 213, 213);
 }
 
 #description{
@@ -247,6 +246,18 @@ footer{
 @media screen and (max-width:400px){
     .thumbnail-box{
         width:90%;
+    }
+
+    #full-view button{
+        font-size:20px;
+    }
+
+    #description h3{
+        font-size:20px
+    }
+
+    #description p{
+        font-size:18px;
     }
 }
 
