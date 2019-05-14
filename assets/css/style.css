@@ -113,8 +113,6 @@ nav{
     padding:20px;
 
     overflow-y: scroll;
-    -webkit-overflow-scrolling:touch;
-
     background:rgb(47, 62, 48);
     border:inherit solid 2px;
     border-radius:4px;
@@ -285,7 +283,6 @@ footer{
         margin: 0 auto;
         min-width:90%;
         margin-left:5%;
-
     }
    
     .thumbnail-box{
