@@ -44,8 +44,29 @@ nav{
     height:50px;
     background:rgb(20, 27, 32);
 }
-nav h1{
-    float:left;
+#site-title{
+    position:absolute;
+    transform:translateY(-50%);
+    top:50%;
+}
+
+
+#tab-title{
+    position:absolute;
+    transform:translateY(-50%);
+    right:5%;
+    top:50%;
+    margin-top:5px;
+    padding:4px 20px 10px 20px;
+    
+    background:rgb(27, 37, 34);
+    border-radius:4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#tab-title:hover{
+    cursor:pointer;
 }
 
 .tab-group{
@@ -54,6 +75,11 @@ nav h1{
     margin-right:10%;
     float:right;
 
+    margin-top:5px;
+    padding:4px 20px 4px 10px;
+    border-radius:4px;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
     z-index:0;
 }
 
@@ -61,7 +87,7 @@ nav h1{
     font-size:20px;
     border:none;
     padding:5px;
-    padding-bottom:20px;
+    padding-bottom:15px;
     background:rgb(47, 62, 48);
     color:rgb(233, 200, 140);
     border:inherit solid 2px;
@@ -96,30 +122,15 @@ nav h1{
     z-index:4;
 }
 
-#tab-title{
-    display:inline-block;
-    margin-left:10%;
-    margin-top:5px;
-    padding:4px 20px 4px 10px;
-    
-    background:rgb(47, 62, 48);
-    border-radius:4px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
 
-#tab-title{
-    cursor:pointer;
-}
-
-.tab-group .genre{
-    float:right;
+.tab-group{
+    float:left;
     margin-top:5px;
     padding:4px 20px 4px 10px;
     border-radius:4px;
     border-bottom-left-radius:0;
     border-bottom-right-radius:0;
-    margin-right:5%;
+    margin-left:5%;
 }
 
 .thumbnail-box{
@@ -255,9 +266,14 @@ nav h1{
 footer{
     text-align:center;
     position:fixed;
-    bottom:0;
+    transform:translateY(-50%);
+    bottom:0px;
     left:0;
     width:100%;
+    padding:2px;
+    z-index:10;
+
+    background:rgb(20, 27, 32);
 }
 
 
@@ -268,6 +284,7 @@ footer{
     .tab-group{
         margin: 0 auto;
         min-width:90%;
+        margin-left:5%;
 
     }
    
@@ -291,21 +308,6 @@ footer{
 @media screen and (max-width:500px){
     .content-box{
         height:75%;
-    }
-
-    #tab-title{
-        position:fixed;
-        top:60px;
-        left:0px;
-        margin:0;
-        padding-left:15px;
-        border-top-left-radius:0;
-        border-bottom-left-radius:0;
-        border-bottom-right-radius:4px;
-    }
-
-    .tab-group{
-        margin-top:50px;
     }
 
 }

@@ -249,6 +249,8 @@ $(document).ready(function(){
             <span>
         </div>
         `);
+
+        $("footer").css("display", "none");
       
         
         $("#full-view>img").on("load",function(){
@@ -261,8 +263,6 @@ $(document).ready(function(){
         $("#full-view").remove();
         clicks=0;
     });
-
-
 
     $("body").on("click", "#full-view>button", function(){
         if (clicks === 0){
