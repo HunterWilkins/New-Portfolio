@@ -48,6 +48,7 @@ nav{
     position:absolute;
     transform:translateY(-50%);
     top:50%;
+    left:5%;
 }
 
 
@@ -116,6 +117,7 @@ nav{
     background:rgb(47, 62, 48);
     border:inherit solid 2px;
     border-radius:4px;
+    box-shadow:0 5px 5px rgb(20, 27, 32);
 
     z-index:4;
 }
@@ -139,11 +141,15 @@ nav{
     text-overflow:ellipsis;
     text-align:center;
     overflow:hidden;
-    
+
     position:relative;
     z-index:1;
 
-    transition: width .25s;
+    transition: width .25s, transform .10s;
+}
+
+.thumbnail-box:active {
+    transform:scale(1.1);
 }
 
 .thumbnail{
@@ -257,6 +263,23 @@ nav{
     font-size:1.5em;
     overflow-y:scroll;
     background:rgb(35, 35, 35);
+    text-align:left;
+}
+
+#description h3 {
+    margin:0 auto;
+    max-width: 500px;
+}
+
+#description hr {
+    margin:0 auto;
+}
+
+#description p {
+    text-align:left;
+    color:rgb(238, 221, 188);
+    margin:5px auto;
+    max-width:500px;
 }
 
 /*==================================================*/
@@ -264,11 +287,10 @@ nav{
 footer{
     text-align:center;
     position:fixed;
-    transform:translateY(-50%);
     bottom:0px;
     left:0;
     width:100%;
-    padding:2px;
+    padding:4px;
     z-index:10;
 
     background:rgb(20, 27, 32);
@@ -302,12 +324,6 @@ footer{
     }
 }
 
-@media screen and (max-width:500px){
-    .content-box{
-        height:75%;
-    }
-
-}
 
 
 @media screen and (min-width:600px){
