@@ -281,9 +281,7 @@ $(document).ready(function(){
     });
 
     // Prevent Iphone slidey scrolling on body
-    $("body").on("touchend", function(event) {
-        event.preventDefault();
-    });
+  
 
 // End of Document.Ready Function
 });
